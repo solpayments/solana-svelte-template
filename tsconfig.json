@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+    "strict": true,
     "strictNullChecks": true,
     "module": "es2015",
   },
