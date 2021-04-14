@@ -10,7 +10,7 @@ node_modules/
 /coverage
 *.rej
 # production
-/build
+public/build
 server/
 
 # misc
