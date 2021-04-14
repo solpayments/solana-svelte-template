@@ -1,0 +1,56 @@
+{
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear",
+    "validate": "svelte-check",
+    "lint": "npx eslint --fix '{,!(node_modules|public)/**/}*.{js,ts,svelte}'",
+    "format": "npx prettier --write '{,!(node_modules|public)/**/}*.{js,ts,svelte}'"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,svelte}": [
+      "svelte-check",
+      "npm run lint",
+      "npm run format",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "@tsconfig/svelte": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.24.0",
+    "eslint-config-typestrict": "^1.0.1",
+    "eslint-plugin-sonarjs": "^0.6.0",
+    "eslint-plugin-svelte3": "^3.1.2",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^2.2.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0",
+    "svelte-check": "^1.0.0",
+    "svelte-preprocess": "^4.7.0",
+    "tslib": "^2.0.0",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.0"
+  }
+}
