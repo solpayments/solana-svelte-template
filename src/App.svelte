@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { WalletAdapter } from './main';
+  import { connectToWallet } from './helpers/wallet';
+  import { comp, store as adapter, setComp } from './stores';
   export let name: string;
-  export let wallet: WalletAdapter;
-  export let comp: boolean;
 </script>
 
 <main>
@@ -12,16 +11,22 @@
     apps.
   </p>
 
-  <button on:click={() => (comp = true)}> Load Component </button>
+  <button on:click={() => setComp()}> Connect </button>
 
-  {#if comp}
-    {#await wallet.connect()}
+  {#if $comp}
+    {#await connectToWallet()}
       <p>loading</p>
-    {:then pubkey}
-      <p style="color: green">Done {pubkey}</p>
+    {:then _pubkey}
+      <p style="color: green">Done</p>
     {:catch error}
       <p style="color: red">{error}</p>
     {/await}
+  {/if}
+
+  {#if $adapter?.publicKey}
+    <p style="color: green">Connected to {$adapter.publicKey}</p>
+  {:else}
+    <p style="color: red">Not connected</p>
   {/if}
 </main>
 
