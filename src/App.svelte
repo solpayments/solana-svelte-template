@@ -1,5 +1,8 @@
 <script lang="ts">
+  import type { WalletAdapter } from './main';
   export let name: string;
+  export let wallet: WalletAdapter;
+  export let comp: boolean;
 </script>
 
 <main>
@@ -8,6 +11,18 @@
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte
     apps.
   </p>
+
+  <button on:click={() => (comp = true)}> Load Component </button>
+
+  {#if comp}
+    {#await wallet.connect()}
+      <p>loading</p>
+    {:then pubkey}
+      <p style="color: green">Done {pubkey}</p>
+    {:catch error}
+      <p style="color: red">{error}</p>
+    {/await}
+  {/if}
 </main>
 
 <style>
