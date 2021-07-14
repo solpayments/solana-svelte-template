@@ -1,7 +1,14 @@
 <script lang="ts">
-  import { connectToWallet } from './helpers/wallet';
-  import { comp, store as adapter, setComp } from './stores';
+  import { onMount } from 'svelte';
+  import { RPC_API_URL } from './helpers/config';
+  import { adapter, connected, solanaNetwork } from './stores';
+  import { getTokenRegistry } from './stores/tokenRegistry';
+  import Wallet from './components/Wallet/Wallet.svelte';
+
   export let name: string;
+
+  solanaNetwork.update(() => RPC_API_URL);
+  onMount(async () => getTokenRegistry());
 </script>
 
 <main>
@@ -11,22 +18,10 @@
     apps.
   </p>
 
-  <button on:click={() => setComp()}> Connect </button>
-
-  {#if $comp}
-    {#await connectToWallet()}
-      <p>loading</p>
-    {:then _pubkey}
-      <p style="color: green">Done</p>
-    {:catch error}
-      <p style="color: red">{error}</p>
-    {/await}
-  {/if}
-
-  {#if $adapter?.publicKey}
-    <p style="color: green">Connected to {$adapter.publicKey}</p>
+  {#if $connected}
+    <p style="color: green">Connected to {$adapter?.publicKey}</p>
   {:else}
-    <p style="color: red">Not connected</p>
+    <Wallet />
   {/if}
 </main>
 
