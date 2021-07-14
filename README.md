@@ -11,6 +11,15 @@ cd svelte-solana-app
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
+## Solana helpers
+
+This template includes some helpers to help you get quickly started with building a Solana web app.  Included are things such as:
+
+- connecting to a Solana wallet ([Sollet](https://sollet.io))
+- fetching Solana tokens
+- creating Solana accounts
+
+We hope to add more over time.
 
 ## Get started
 
