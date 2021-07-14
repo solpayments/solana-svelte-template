@@ -1,16 +1,12 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Solana svelte app template
 
----
-
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+This is a project template for [Solana](https://solana.com/) web apps made with [Svelte](https://svelte.dev). It is based on https://github.com/sveltejs/template.
 
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+npx degit sveltejs/template svelte-solana-app
+cd svelte-solana-app
 ```
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
@@ -21,7 +17,7 @@ cd svelte-app
 Install the dependencies...
 
 ```bash
-cd svelte-app
+cd svelte-solana-app
 npm install
 ```
 
@@ -60,17 +56,7 @@ If you're building a single-page app (SPA) with multiple routes, sirv needs to b
 
 ## Using TypeScript
 
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
+This template comes works with Typescript out of the box.
 
 ## Deploying to the web
 
